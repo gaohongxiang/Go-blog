@@ -35,12 +35,20 @@ func init() {
 
 	/*****************教程相关路由*****************************/
 	//教程列表
-	beego.Router("/admin/tutorial/classes", &admin.TutorialController{},"get:ClassesList")
+	beego.Router("/admin/class/list", &admin.ClassController{},"get:ClassesList")
+	//添加教程
+	beego.Router("/admin/class/add", &admin.ClassController{},"get:Add")
+	beego.Router("/admin/class/addedit", &admin.ClassController{},"post:Addedit")
+	//修改教程
+	beego.Router("/admin/class/update/:id([0-9]+)", &admin.ClassController{},"get:Update")
+	beego.Router("/admin/class/updateedit/:id([0-9]+)", &admin.ClassController{},"post:Updateedit")
+	//删除教程
+	beego.Router("/admin/class/delete/:id([0-9]+)", &admin.ClassController{},"get:Delete")
+
 	//具体教程文章列表
 	beego.Router("/admin/tutorial/list/:id([0-9]+)", &admin.TutorialController{},"get:List")
 	//教程文章详情
 	beego.Router("/admin/tutorial/detail/:id([0-9]+)", &admin.TutorialController{},"get:Detail")
-	
 	//添加教程章节(弹出层形式，没有展示添加页面)
 	beego.Router("/admin/tutorial/addchapter", &admin.TutorialController{},"post:Addchapter")
 	//修改教程章节(弹出层形式，没有展示修改页面)

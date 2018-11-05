@@ -30,6 +30,10 @@ func (c *ArticleController) List() {
 //展示添加文章页面
 func (c *ArticleController) Add() {
 
+	categorys := models.GetCategorys()
+
+	c.Data["Categorys"] = categorys
+	
 	c.Layout = "admin/layouts/layout.tpl"
 	c.TplName = "admin/article/add.tpl"
 }
@@ -54,9 +58,10 @@ func (c *ArticleController) Addedit() {
 func (c *ArticleController) Update() {
 	id,_ := c.GetInt64(":id")
 	article,category := models.GetArticleById(id)
-
-	c.Data["Article"] = article
+	categorys := models.GetCategorys()
+	c.Data["Article"] = article 
 	c.Data["Category"] = category
+	c.Data["Categorys"] = categorys
 
 	c.Layout = "admin/layouts/layout.tpl"
 	c.TplName = "admin/article/edit.tpl"

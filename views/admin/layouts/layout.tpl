@@ -15,7 +15,7 @@
     <ul class="layui-nav layui-layout-left">
       <li class="layui-nav-item"><a href="">控制台</a></li>
       <li class="layui-nav-item"><a href="/admin/article/list">文章管理</a></li>
-      <li class="layui-nav-item"><a href="/admin/tutorial/classes">教程管理</a></li>
+      <li class="layui-nav-item"><a href="/admin/class/list">教程管理</a></li>
       <li class="layui-nav-item"><a href="">用户</a></li>
       <li class="layui-nav-item"><a href="/" target="_blank">预览前台</a></li>
       <li class="layui-nav-item">

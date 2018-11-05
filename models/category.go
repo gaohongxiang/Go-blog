@@ -10,7 +10,7 @@ type Category struct {
 	Id			int64
 	Pid			int64
 	Name		string
-	Status		int64
+	Status		int64		`orm:"default:(0)"`
 	Article		[]*Article	`orm:"reverse(many)"` //设置一对多的反向关系。
 	Created_at  time.Time	`orm:"auto_now_add;type(datetime)"`
 	Updated_at	time.Time	`orm:"auto_now;type(datetime)"`

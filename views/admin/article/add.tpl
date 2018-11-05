@@ -10,13 +10,9 @@
         <label class="layui-form-label">分类</label>
         <div class="layui-input-block">
             <select name="category" lay-filter="fenlei">
-            <option value="1">Linux</option>
-            <option value="2">网络</option>
-            <option value="3">算法与数据结构</option>
-            <option value="4">数据库</option>
-            <option value="5">语言</option>
-            <option value="7">容器云</option>
-            <option value="13">区块链</option>
+                {{range .Categorys}}
+                    <option value="{{.Id}}">{{.Name}}</option>
+                {{end}}
             </select>
         </div>
         </div>
@@ -28,8 +24,7 @@
         </div>
         <div class="layui-form-item">
         <div class="layui-input-block">
-            <button class="layui-btn" lay-submit lay-filter="*">立即提交</button>
-            <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+            <button class="layui-btn" lay-submit lay-filter="*">保存</button>
         </div>
         </div>
     </form>
@@ -49,7 +44,12 @@ $(function() {
         width: "100%",
         height: 640,
         emoji: true,
-        path: '../../../static/editor/lib/' 
+        path: '../../../static/editor/lib/' ,
+        tocm:true,
+        /*设置主题颜色*/
+        // editorTheme: "pastel-on-dark",
+        // theme: "gray",
+        // previewTheme: "dark"
     });
 });
 </script>

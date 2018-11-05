@@ -1,5 +1,5 @@
 <div class="layui-body" style="padding:20px;position:absolute;left:0;">
-    <a href="/admin/tutorial/add" class="layui-btn">添加教程</a>
+    <a href="/admin/class/add" class="layui-btn">添加教程</a>
     <table class="layui-table">
       <colgroup>
         <col width="150">
@@ -26,8 +26,8 @@
           <td>{{.Created_at}}</td>
           <td style="text-align: center">
             <a href="/admin/tutorial/list/{{.Id}}" class="layui-btn layui-btn-sm">进入</a>
-            <a href="/admin/tutorial/update/{{.Id}}" class="layui-btn layui-btn-sm layui-btn-normal">修改</a>
-            <a href="/admin/tutorial/delete/{{.Id}}" class="layui-btn layui-btn-sm layui-btn-danger">删除</a>
+            <a href="/admin/class/update/{{.Id}}" class="layui-btn layui-btn-sm layui-btn-normal">修改</a>
+            <a href="/admin/class/delete/{{.Id}}" class="layui-btn layui-btn-sm layui-btn-danger">删除</a>
         </td>
         </tr>
         {{end}}

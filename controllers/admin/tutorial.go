@@ -11,18 +11,6 @@ type TutorialController struct {
 	beego.Controller
 }
 
-
-//展示教程列表
-func (c *TutorialController) ClassesList() {
-
-	classes := models.GetClasses()
-
-	c.Data["Classes"] = classes
-
-	c.Layout = "admin/layouts/layout.tpl"
-	c.TplName = "admin/tutorial/classes.tpl"
-}
-
 //展示具体教程内容列表
 func (c *TutorialController) List() {
 	//获取分类id
