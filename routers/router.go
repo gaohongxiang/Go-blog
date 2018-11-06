@@ -12,6 +12,8 @@ func init() {
 	beego.Router("/", &controllers.ArticleController{},"get:Index")
 	beego.Router("/article/detail/:id([0-9]+)", &controllers.ArticleController{},"get:Detail")
 	beego.Router("/article/categoryList/:id([0-9]+)", &controllers.ArticleController{},"get:CategoryList")
+	beego.Router("/article/search", &controllers.ArticleController{},"get:Search")
+
 	beego.Router("/tutorial/classList/:id([0-9]+)", &controllers.TutorialController{},"get:ClassList")
 	beego.Router("/tutorial/detail/:id([0-9]+)", &controllers.TutorialController{},"get:Detail")
 	// beego.AutoRouter(&controllers.ArticleController{})
