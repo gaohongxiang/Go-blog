@@ -4,6 +4,7 @@ import (
 	"github.com/astaxie/beego"
 	"github.com/astaxie/beego/orm" //导入包
 	"time"
+	"strconv"
 )
 
 type Category struct {
@@ -11,6 +12,7 @@ type Category struct {
 	Pid			int64
 	Name		string
 	Status		int64		`orm:"default:(0)"`
+	Sort		int64
 	Article		[]*Article	`orm:"reverse(many)"` //设置一对多的反向关系。
 	Created_at  time.Time	`orm:"auto_now_add;type(datetime)"`
 	Updated_at	time.Time	`orm:"auto_now;type(datetime)"`
@@ -72,3 +74,37 @@ func GetCategoryById(id int64) (catetory Category) {
 // 	}
 // 	return tmp
 // }
+
+func InstertToCategory(category *Category) int64 {
+	o := orm.NewOrm()
+	id, _ := o.Insert(category)//新插入的数据的id
+	return id
+}
+
+func UpdateCategory(id int64, params map[string]string) {
+	o := orm.NewOrm()
+	category := Category{Id: id}
+	if o.Read(&category) == nil {
+		for k, v := range params {
+			if k == "name" {
+				category.Name = v
+			}
+			if k == "sort" {
+				sort, _ := strconv.ParseInt(v, 10, 32)//string类型转换为int64类型
+				category.Sort = sort
+			}
+		}
+		o.Update(&category)
+	}
+	return
+}
+
+func DeleteCategory(id int64) error {
+	o := orm.NewOrm()
+
+	category := Category{Id: id}
+	if _, err := o.Delete(&category); err != nil {
+		return err
+	}
+	return nil
+}

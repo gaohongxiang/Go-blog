@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>{{.Class.Name}} 教程</title>
+  <link rel="shortcut icon" href="../../static/favicon.ico" type="image/x-icon" />
   <link rel="stylesheet" href="../../static/layui-2.4.3/css/layui.css">
   <link rel="stylesheet" href="../../static/editor/css/editormd.min.css" />
 </head>

@@ -8,11 +8,16 @@ import (
 
 func init() {
 
-	/************************************前台路由**************************************************/
+	/******************************************************前台路由**************************************************************/
+
+	/***********************************文章相关路由*****************************************/
+
 	beego.Router("/", &controllers.ArticleController{},"get:Index")
 	beego.Router("/article/detail/:id([0-9]+)", &controllers.ArticleController{},"get:Detail")
 	beego.Router("/article/categoryList/:id([0-9]+)", &controllers.ArticleController{},"get:CategoryList")
 	beego.Router("/article/search", &controllers.ArticleController{},"get:Search")
+
+/***********************************教程相关路由*****************************************/
 
 	beego.Router("/tutorial/classList/:id([0-9]+)", &controllers.TutorialController{},"get:ClassList")
 	beego.Router("/tutorial/detail/:id([0-9]+)", &controllers.TutorialController{},"get:Detail")
@@ -20,11 +25,11 @@ func init() {
 	beego.Router("/login",&controllers.LoginController{},"post:Login")
 	beego.AutoRouter(&controllers.LoginController{})
 
+	
 
+	/******************************************************后台路由**************************************************************/
 
-	/************************************后台路由**************************************************/
-
-	/*****************文章相关路由*****************************/
+	/***********************************文章相关路由*****************************************/
 	beego.Router("/admin/article/list", &admin.ArticleController{},"get:List")
 	beego.Router("/admin/article/add", &admin.ArticleController{},"get:Add")
 	beego.Router("/admin/article/addedit", &admin.ArticleController{},"post:Addedit")
@@ -34,18 +39,26 @@ func init() {
 	//或者直接用自动路由，用到路由的地方直接用 /article/方法名的形式来表示即可
 	// beego.AutoRouter(&admin.ArticleController{})
 
+	/***********************************类别相关路由*****************************************/
+	beego.Router("/admin/category/list", &admin.CategoryController{},"get:List")
+	beego.Router("/admin/category/add", &admin.CategoryController{},"get:Add")
+	beego.Router("/admin/category/addedit", &admin.CategoryController{},"post:Addedit")
+	beego.Router("/admin/category/update/:id([0-9]+)", &admin.CategoryController{},"get:Update")
+	beego.Router("/admin/category/updateedit/:id([0-9]+)", &admin.CategoryController{},"post:Updateedit")
+	beego.Router("/admin/category/delete/:id([0-9]+)", &admin.CategoryController{},"get:Delete")
 
-	/*****************教程相关路由*****************************/
-	//教程列表
+	/***********************************教程相关路由*****************************************/
+
+	/***********************教程标题相关路由*****************************/
+
 	beego.Router("/admin/class/list", &admin.ClassController{},"get:List")
-	//添加教程
 	beego.Router("/admin/class/add", &admin.ClassController{},"get:Add")
 	beego.Router("/admin/class/addedit", &admin.ClassController{},"post:Addedit")
-	//修改教程
 	beego.Router("/admin/class/update/:id([0-9]+)", &admin.ClassController{},"get:Update")
 	beego.Router("/admin/class/updateedit/:id([0-9]+)", &admin.ClassController{},"post:Updateedit")
-	//删除教程
 	beego.Router("/admin/class/delete/:id([0-9]+)", &admin.ClassController{},"get:Delete")
+
+	/***********************教程文章相关路由*****************************/
 
 	//具体教程文章列表
 	beego.Router("/admin/tutorial/list/:id([0-9]+)", &admin.TutorialController{},"get:List")

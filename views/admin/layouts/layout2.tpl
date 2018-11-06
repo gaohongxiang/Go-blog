@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>layout 后台大布局</title>
+  <link rel="shortcut icon" href="../../../static/favicon.ico" type="image/x-icon" />
   <link rel="stylesheet" href="../../../static/layui-2.4.3/css/layui.css">
   <link rel="stylesheet" href="../../../static/editor/css/editormd.min.css" />
 </head>
@@ -13,11 +14,12 @@
     <div class="layui-logo">layui 后台布局</div>
     <!-- 头部区域（可配合layui已有的水平导航） -->
     <ul class="layui-nav layui-layout-left">
-      <li class="layui-nav-item"><a href="">控制台</a></li>
-      <li class="layui-nav-item"><a href="/admin/article/list">文章管理</a></li>
-      <li class="layui-nav-item"><a href="/admin/class/list">教程管理</a></li>
-      <li class="layui-nav-item"><a href="">用户</a></li>
-      <li class="layui-nav-item"><a href="/" target="_blank">预览前台</a></li>
+        <li class="layui-nav-item"><a href="">控制台</a></li>
+        <li class="layui-nav-item"><a href="">用户</a></li>
+        <li class="layui-nav-item"><a href="/admin/article/list">文章管理</a></li>
+        <li class="layui-nav-item"><a href="/admin/category/list">类别管理</a></li>
+        <li class="layui-nav-item"><a href="/admin/class/list">教程管理</a></li>  
+        <li class="layui-nav-item"><a href="/" target="_blank">预览前台</a></li>
     </ul>
     <ul class="layui-nav layui-layout-right">
       <li class="layui-nav-item">
