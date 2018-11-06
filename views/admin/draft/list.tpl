@@ -1,5 +1,4 @@
 <div class="layui-body" style="padding:20px;position:absolute;left:0;">
-  <a href="/admin/article/add" class="layui-btn">添加文章</a>
   <table class="layui-table">
     <colgroup>
       <col width="150">
@@ -17,7 +16,7 @@
       </tr> 
     </thead>
     <tbody>
-      {{range .Articles}}
+      {{range .Drafts}}
       <tr>
         <td style="text-align: center">{{.Id}}</td>
         <td style="text-align: center">{{.Category.Name}}</td>
@@ -25,9 +24,9 @@
         <td>{{substr .Content 0 20}}...</td>
         <td>{{.Created_at}}</td>
         <td style="text-align: center">
-          <a href="/admin/article/draft/{{.Id}}" class="layui-btn layui-btn-sm">转为草稿</a>
-          <a href="/admin/article/update/{{.Id}}" class="layui-btn layui-btn-sm layui-btn-normal">修改</a>
-          <a href="/admin/article/delete/{{.Id}}" class="layui-btn layui-btn-sm layui-btn-danger">删除</a>
+          <a href="/admin/draft/release/{{.Id}}" class="layui-btn layui-btn-sm">发布</a>
+          <a href="/admin/draft/update/{{.Id}}" class="layui-btn layui-btn-sm layui-btn-normal">修改</a>
+          <a href="/admin/draft/delete/{{.Id}}" class="layui-btn layui-btn-sm layui-btn-danger">删除</a>
         </td>
       </tr>
       {{end}}

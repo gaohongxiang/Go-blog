@@ -1,5 +1,5 @@
-<div class="layui-body" style="padding: 15px;">
-    <form class="layui-form" action="/admin/article/updateedit/{{.Article.Id}}" method="POST"> 
+<div class="layui-body" style="padding: 15px;z-index:1000;">
+    <form class="layui-form" id="form" method="POST"> 
         <div class="layui-form-item">
         <label class="layui-form-label">标题</label>
         <div class="layui-input-block">
@@ -25,7 +25,8 @@
         </div>
         <div class="layui-form-item">
         <div class="layui-input-block">
-            <button class="layui-btn" lay-submit lay-filter="*">保存</button>
+            <button class="layui-btn" lay-submit lay-filter="*" onclick="release()">保存</button>
+            <button class="layui-btn" lay-submit lay-filter="*" onclick="draft()">转为草稿</button>
         </div>
         </div>
     </form>
@@ -49,4 +50,12 @@ $(function() {
         tocm:true,
     });
 });
+function release(){
+    $("#form").attr("action","/admin/article/updateedit/{{.Article.Id}}");
+    $("#form").submit();
+}
+function draft() {
+    $("#form").attr("action","/admin/article/updatedraft/{{.Article.Id}}");
+    $("#form").submit();
+}
 </script>

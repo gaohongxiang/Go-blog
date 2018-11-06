@@ -3,29 +3,30 @@
         <div class="layui-form-item">
         <label class="layui-form-label">标题</label>
         <div class="layui-input-block">
-            <input type="text" name="title" placeholder="请输入" autocomplete="off" class="layui-input">
+            <input type="text" name="title" value="{{.Draft.Title}}" autocomplete="off" class="layui-input">
         </div>
         </div>
         <div class="layui-form-item">
         <label class="layui-form-label">分类</label>
         <div class="layui-input-block">
             <select name="category" lay-filter="fenlei">
-                {{range .Categorys}}
-                    <option value="{{.Id}}">{{.Name}}</option>
-                {{end}}
+            {{$id := .Category.Id}}
+            {{range .Categorys}}
+                <option value="{{.Id}}" {{if eq .Id $id}} selected="selected" {{end}}>{{.Name}}</option>
+            {{end}}
             </select>
         </div>
         </div>
         <div class="layui-form-item layui-form-text">
         <label class="layui-form-label">内容</label>
         <div id="editormd" class="layui-input-block">
-            <textarea placeholder="请输入内容" class="layui-textarea" name="content"></textarea>
+            <textarea  class="layui-textarea" name="content">{{.Draft.Content}}</textarea>
         </div>
         </div>
         <div class="layui-form-item">
         <div class="layui-input-block">
             <button class="layui-btn" lay-submit lay-filter="*" onclick="release()">发表</button>
-            <button class="layui-btn" lay-submit lay-filter="*" onclick="draft()">存为草稿</button>
+            <button class="layui-btn" lay-submit lay-filter="*" onclick="draft()">暂存</button>
         </div>
         </div>
     </form>
@@ -45,20 +46,16 @@ $(function() {
         width: "100%",
         height: 640,
         emoji: true,
-        path: '../../../static/editor/lib/' ,
+        path: '../../../static/editor/lib/',
         tocm:true,
-        /*设置主题颜色*/
-        // editorTheme: "pastel-on-dark",
-        // theme: "gray",
-        // previewTheme: "dark"
     });
 });
 function release(){
-    $("#form").attr("action","/admin/article/addedit");
+    $("#form").attr("action","/admin/draft/updaterelease/{{.Draft.Id}}");
     $("#form").submit();
 }
 function draft() {
-    $("#form").attr("action","/admin/draft/addedit");
+    $("#form").attr("action","/admin/draft/updateedit/{{.Draft.Id}}");
     $("#form").submit();
 }
 </script>

@@ -78,6 +78,29 @@ func (c *ArticleController) Updateedit() {
 	
 	c.Redirect("/admin/article/list", 301)
 }
+
+//执行修改文章并转为草稿操作
+func (c *ArticleController) Updatedraft() {
+	id,_ := c.GetInt64(":id")
+	params := make(map[string]string)
+	params["title"] = c.GetString("title")
+	params["content"] = c.GetString("content")
+	params["status"] = "1"
+	params["category"] = c.GetString("category")
+	models.UpdateArticle(id, params)
+	
+	c.Redirect("/admin/article/list", 301)
+}
+
+//直接转为草稿操作
+func (c *ArticleController) Draft() {
+	id,_ := c.GetInt64(":id")
+	
+	models.UpdateArticleStatusById(id, 1)
+	
+	c.Redirect("/admin/article/list", 301)
+}
+
 //删除文章
 func (c *ArticleController) Delete() {
 	id,_ := c.GetInt64(":id")

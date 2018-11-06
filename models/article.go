@@ -28,11 +28,18 @@ func init() {
 func GetArticles(pageNum int,currentPage int) ([]*Article, int64) {
 	o := orm.NewOrm()
 	var articles []*Article
-	o.QueryTable("ghx_article").OrderBy("-id").Limit(pageNum,(currentPage-1)*pageNum).RelatedSel().All(&articles)
-	totals, _ := o.QueryTable("ghx_article").Count()
+	o.QueryTable("ghx_article").OrderBy("-id").Filter("Status",0).Limit(pageNum,(currentPage-1)*pageNum).RelatedSel().All(&articles)
+	totals, _ := o.QueryTable("ghx_article").Filter("Status",0).Count()
 	return articles, totals
 }
-
+//草稿文章数据
+func GetDrafts(pageNum int,currentPage int) ([]*Article, int64) {
+	o := orm.NewOrm()
+	var articles []*Article
+	o.QueryTable("ghx_article").OrderBy("-id").Filter("Status",1).Limit(pageNum,(currentPage-1)*pageNum).RelatedSel().All(&articles)
+	totals, _ := o.QueryTable("ghx_article").Filter("Status",1).Count()
+	return articles, totals
+}
 //各分类页数据
 func GetArticlesByCategory(category int64, pageNum int,currentPage int) ([]*Article, int64) {
     o := orm.NewOrm()
@@ -84,6 +91,10 @@ func UpdateArticle(id int64, params map[string]string) {
 			if k == "content" {
 				article.Content = v
 			}
+			if k == "status" {
+				status, _ := strconv.ParseInt(v, 10, 32)//string类型转换为int64类型
+				article.Status = int(status)
+			}
 			if k == "category" {
 				id, _ := strconv.ParseInt(v, 10, 32)//string类型转换为int64类型
 				category := GetCategoryById(id)
@@ -93,6 +104,15 @@ func UpdateArticle(id int64, params map[string]string) {
 		o.Update(&article)
 	}
 	return
+}
+
+func UpdateArticleStatusById(id int64,status int) () {
+	o := orm.NewOrm()
+	article := Article{Id: id}
+	if o.Read(&article) == nil {//Read方法返回值为err，bool型。
+		article.Status = status
+		o.Update(&article)
+	}
 }
 
 func DeleteArticle(id int64) error {

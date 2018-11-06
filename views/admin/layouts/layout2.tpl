@@ -17,6 +17,7 @@
         <li class="layui-nav-item"><a href="">控制台</a></li>
         <li class="layui-nav-item"><a href="">用户</a></li>
         <li class="layui-nav-item"><a href="/admin/article/list">文章管理</a></li>
+        <li class="layui-nav-item"><a href="/admin/draft/list">草稿管理</a></li>
         <li class="layui-nav-item"><a href="/admin/category/list">类别管理</a></li>
         <li class="layui-nav-item"><a href="/admin/class/list">教程管理</a></li>  
         <li class="layui-nav-item"><a href="/" target="_blank">预览前台</a></li>

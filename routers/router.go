@@ -36,8 +36,23 @@ func init() {
 	beego.Router("/admin/article/update/:id([0-9]+)", &admin.ArticleController{},"get:Update")
 	beego.Router("/admin/article/updateedit/:id([0-9]+)", &admin.ArticleController{},"post:Updateedit")
 	beego.Router("/admin/article/delete/:id([0-9]+)", &admin.ArticleController{},"get:Delete")
+	//修改内容并转为草稿
+	beego.Router("/admin/article/updatedraft/:id([0-9]+)", &admin.ArticleController{},"post:Updatedraft")
+	//直接转为草稿
+	beego.Router("/admin/article/draft/:id([0-9]+)", &admin.ArticleController{},"get:Draft")
 	//或者直接用自动路由，用到路由的地方直接用 /article/方法名的形式来表示即可
 	// beego.AutoRouter(&admin.ArticleController{})
+
+	/***********************************草稿相关路由*****************************************/
+	beego.Router("/admin/draft/list", &admin.DraftController{},"get:List")
+	beego.Router("/admin/draft/update/:id([0-9]+)", &admin.DraftController{},"get:Update")
+	beego.Router("/admin/draft/updateedit/:id([0-9]+)", &admin.DraftController{},"post:Updateedit")
+	beego.Router("/admin/draft/delete/:id([0-9]+)", &admin.DraftController{},"get:Delete")
+	beego.Router("/admin/draft/addedit", &admin.DraftController{},"post:Addedit")
+	//修改内容并发布
+	beego.Router("/admin/draft/updaterelease/:id([0-9]+)", &admin.DraftController{},"post:Updaterelease")
+	//直接发布
+	beego.Router("/admin/draft/release/:id([0-9]+)", &admin.DraftController{},"get:Release")
 
 	/***********************************类别相关路由*****************************************/
 	beego.Router("/admin/category/list", &admin.CategoryController{},"get:List")
