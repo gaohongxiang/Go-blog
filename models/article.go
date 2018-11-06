@@ -44,7 +44,7 @@ func GetDrafts(pageNum int,currentPage int) ([]*Article, int64) {
 func GetArticlesByCategory(category int64, pageNum int,currentPage int) ([]*Article, int64) {
     o := orm.NewOrm()
 	var articles []*Article
-	o.QueryTable("ghx_article").Filter("Category",category).RelatedSel().OrderBy("-id").Limit(pageNum,(currentPage-1)*pageNum).All(&articles)
+	o.QueryTable("ghx_article").Filter("Category",category).Filter("Status",0).RelatedSel().OrderBy("-id").Limit(pageNum,(currentPage-1)*pageNum).All(&articles)
 	totals, _ := o.QueryTable("ghx_article").Filter("Category",category).Count()
 	return articles, totals
 }
@@ -61,7 +61,7 @@ func GetArticleById(id int64) (article Article, category Category) {
 /*搜索文章功能*/
 func GetArticlesByKeyWords(keywords string, pageNum int, currentPage int) (articles []*Article, totals int64) {
 	o := orm.NewOrm()
-	o.QueryTable("ghx_article").Filter("title__icontains", keywords).Limit(pageNum,(currentPage-1)*pageNum).All(&articles)
+	o.QueryTable("ghx_article").Filter("title__icontains", keywords).Filter("Status",0).Limit(pageNum,(currentPage-1)*pageNum).All(&articles)
 	totals, _ = o.QueryTable("ghx_article").Filter("title__icontains", keywords).Count()
 	return articles, totals
 }
