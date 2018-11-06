@@ -35,7 +35,7 @@ func init() {
 
 	/*****************教程相关路由*****************************/
 	//教程列表
-	beego.Router("/admin/class/list", &admin.ClassController{},"get:ClassesList")
+	beego.Router("/admin/class/list", &admin.ClassController{},"get:List")
 	//添加教程
 	beego.Router("/admin/class/add", &admin.ClassController{},"get:Add")
 	beego.Router("/admin/class/addedit", &admin.ClassController{},"post:Addedit")

@@ -10,7 +10,7 @@ type ClassController struct {
 }
 
 //展示教程列表
-func (c *ClassController) ClassesList() {
+func (c *ClassController) List() {
 
 	classes := models.GetClasses()
 
