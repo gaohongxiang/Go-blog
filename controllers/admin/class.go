@@ -34,6 +34,7 @@ func (c *ClassController) Addedit() {
 	class.Name = c.GetString("name")
 	class.Sort, _ = c.GetInt64("sort")
 	class.Desc = c.GetString("desc")
+	class.Status, _ = c.GetInt64("status")
 
 	models.InstertToClass(class)
 
@@ -60,6 +61,7 @@ func (c *ClassController) Updateedit() {
 	params["name"] = c.GetString("name")
 	params["desc"] = c.GetString("desc")
 	params["sort"] = c.GetString("sort")
+	params["status"] = c.GetString("status")
 	models.UpdateClass(id, params)
 	
 	c.Redirect("/admin/class/list", 301)

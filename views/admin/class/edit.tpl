@@ -18,10 +18,16 @@
                 <textarea  class="layui-textarea" name="desc">{{.Class.Desc}}</textarea>
             </div>
             </div>
+            <div class="layui-form-item">
+            <label class="layui-form-label">状态</label>
+            <div class="layui-input-block">
+                <input type="radio" name="status" value="0" title="公开" {{if eq .Class.Status 0}} checked="checked" {{end}}>
+                <input type="radio" name="status" value="1" title="私密" {{if eq .Class.Status 1}} checked="checked" {{end}}>
+            </div>
+            </div>
             <div class="layui-form-item" >
             <div class="layui-input-block">
                 <button class="layui-btn" lay-submit lay-filter="*">保存</button>
-    
             </div>
             </div>
         </form>

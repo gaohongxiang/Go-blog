@@ -20,7 +20,7 @@ func (c *ArticleController) Index() {
 	//得到所有文章的数据及总数、类别数据
 	articles, totals := models.GetArticles(pageNum,currentPage)
 	categorys := models.GetCategorys()
-	classes := models.GetClasses()
+	classes := models.GetPublicClasses()
 	fmt.Printf("%v\n",categorys)
 	c.Data["currentPage"] = currentPage	//当前页
 	c.Data["totals"] = totals			//数据的总数
@@ -44,7 +44,7 @@ func (c *ArticleController) CategoryList() {
 	//得到分页的数据及总数
 	articles, totals := models.GetArticlesByCategory(categoryId,pageNum,currentPage)
 	categorys := models.GetCategorys()
-	classes := models.GetClasses()
+	classes := models.GetPublicClasses()
 	c.Data["currentPage"] = currentPage	//当前页
 	c.Data["totals"] = totals			//数据的总数
 	c.Data["Articles"] = articles 		//列表数据
@@ -65,7 +65,7 @@ func (c *ArticleController) Detail() {
 	//获取文章信息
 	detail, category := models.GetArticleById(id)
 	categorys := models.GetCategorys()
-	classes := models.GetClasses()
+	classes := models.GetPublicClasses()
 	c.Data["Detail"] = detail
 	c.Data["Categorys"] = categorys
 	c.Data["Classes"] = classes
@@ -84,9 +84,9 @@ func (c *ArticleController) Search() {
 
 
 	//得到分页的数据及总数
-
+  
 	categorys := models.GetCategorys()
-	classes := models.GetClasses()
+	classes := models.GetPublicClasses()
 	articles, totals := models.GetArticlesByKeyWords(keywords,pageNum,currentPage)
 	c.Data["currentPage"] = currentPage	//当前页
 	c.Data["totals"] = totals			//数据的总数

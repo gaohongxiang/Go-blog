@@ -49,9 +49,11 @@
 <script src="../../../static/editor/editormd.min.js"></script>
 <script>
 //JavaScript代码区域
-layui.use(['element', 'laypage'], function(){
+layui.use(['element', 'laypage', 'form'], function(){
   var element = layui.element
-      ,laypage = layui.laypage;
+      ,laypage = layui.laypage
+      ,form = layui.form;
+
       laypage.render({
         elem: 'page', //注意，这里的 page 是 ID，不用加 # 号
         count: "{{.totals}}", //数据总数，从服务端得到

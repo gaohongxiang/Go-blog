@@ -16,7 +16,7 @@ func (c *TutorialController) ClassList() {
 	id, _ := c.GetInt(":id")
 	tutorials := models.GetTutorialsByClass(id)
 	categorys := models.GetCategorys()
-	classes := models.GetClasses()
+	classes := models.GetPublicClasses()
 	class := models.GetClassById(int64(id))
 
 	c.Data["Categorys"] = categorys
@@ -39,7 +39,7 @@ func (c *TutorialController) Detail() {
 	detail, class := models.GetTutorialById(id)
 	tutorials := models.GetTutorialsByClass(int(class.Id))
 	categorys := models.GetCategorys()
-	classes := models.GetClasses()
+	classes := models.GetPublicClasses()
 
 	c.Data["Categorys"] = categorys
 	c.Data["Classes"] = classes

@@ -71,6 +71,10 @@
         <div>
             <span style="font-size: 14px;margin-right:10px;"><i class="layui-icon layui-icon-website" style="color: #1E9FFF;"></i><strong>友情链接</strong></span>
             <span class="layui-breadcrumb" lay-separator="|">
+                <a href="https://leetcode-cn.com/" target="_blank">leetCode</a>
+                <a href="https://www.golangtc.com/" target="_blank">Golang 中国</a>
+                <a href="https://gocn.vip/" target="_blank">Go中国技术社区</a> 
+                <a href="https://www.infoq.cn/" target="_blank">InfoQ</a>
                 <a href="https://bitshuo.com/" target="_blank">区块链中文社区</a>
                 <a href="https://learnblockchain.cn/" target="_blank">深入浅出区块链</a>
                 <a href="http://me.tryblockchain.org/" target="_blank">区块链技术博客</a>

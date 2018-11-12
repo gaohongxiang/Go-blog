@@ -25,7 +25,15 @@ func init() {
 	orm.RegisterModelWithPrefix(dbprefix, new(Class))
 }
 
-//教程类别
+//公开的教程类别
+func GetPublicClasses() (class []*Class) {
+	o := orm.NewOrm()
+	o.QueryTable("ghx_class").Filter("Status",0).All(&class)
+
+	return class
+}
+
+//全部的教程类别
 func GetClasses() (class []*Class) {
 	o := orm.NewOrm()
 	o.QueryTable("ghx_class").All(&class)
@@ -60,6 +68,10 @@ func UpdateClass(id int64, params map[string]string) {
 			if k == "sort" {
 				sort, _ := strconv.ParseInt(v, 10, 32)//string类型转换为int64类型
 				class.Sort = sort
+			}
+			if k == "status" {
+				status, _ := strconv.ParseInt(v, 10, 32)//string类型转换为int64类型
+				class.Status = status
 			}
 		}
 		o.Update(&class)
